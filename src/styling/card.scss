@@ -1,0 +1,57 @@
+.cards-container {
+    height: 100%;
+    overflow: auto;
+    padding: 7px 7px 0 7px;
+    position: relative;
+
+    .blue-line {
+        position: relative;
+        top: -3px;
+        left: 0;
+        width: calc(100% - 1px);
+        height: 3px;
+        color: white;
+        background-color: #2f81f7;
+        border-radius: 3px;
+    }
+}
+.card {
+    padding: 15px;
+    margin-bottom: 4px;
+
+    position: relative;
+
+    background-color: #161b22;
+    color: #c5cbd2;
+    font-size: 0.95rem;
+
+    border: 1px #30363d solid;
+    border-radius: 7px;
+    .open-task {
+        &:hover {
+            color: #097fec;
+            text-decoration: underline;
+        }
+    }
+    .blue-line {
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+
+        background-color: #2f81f7;
+        border-radius: 3px;
+    }
+    #top {
+        top: -4px;
+        left: 0;
+    }
+    #bottom {
+        top: calc(100% + 2px);
+        left: 0;
+    }
+}
+.card.dragging {
+    cursor: grabbing !important;
+}

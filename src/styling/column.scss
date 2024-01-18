@@ -1,0 +1,101 @@
+@import "colors";
+.column {
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+    height: 400px;
+
+    background-color: #010409;
+    color: white;
+    font-size: 1.1rem;
+
+    border: 1px solid #21262d;
+    border-radius: 5px;
+
+    position: relative;
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+
+        padding: 14px 14px 7px 14px;
+
+        .title {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            width: 95%;
+
+            text-transform: capitalize;
+            .color {
+                width: 13px;
+                height: 13px;
+                border-radius: 100%;
+            }
+            @each $color, $rgb in $colors {
+                .color.#{"" + $color} {
+                    $red: nth($rgb, 1);
+                    $green: nth($rgb, 2);
+                    $blue: nth($rgb, 3);
+                    background-color: rgba($red, $green, $blue, 0.2);
+                    border: 2px solid rgb($red, $green, $blue);
+                }
+            }
+            .tasks-num {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #2d3139;
+                color: #7d8477;
+                width: 13px;
+                height: 13px;
+                padding: 3px;
+                font-size: 0.8rem;
+                border-radius: 100%;
+            }
+        }
+    }
+
+    .description {
+        padding: 0 14px;
+        margin-bottom: 13px;
+        font-size: 0.9rem;
+        opacity: 0.6;
+    }
+    .add-item-button {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        width: calc(100% - 30px);
+        padding: 10px 15px;
+
+        border-radius: 5px;
+        font-size: 0.9rem;
+        color: rgba($color: #ffffff, $alpha: 0.6);
+        transition: 0.2s;
+        &:hover {
+            background-color: rgba($color: #ffffff, $alpha: 0.1);
+        }
+        .plus-icon {
+            width: 12px;
+            height: 11px;
+            opacity: 0.6;
+        }
+    }
+    .vertical-line {
+        position: absolute;
+        height: 100%;
+        width: 4px;
+        top: 0;
+        background-color: #2f81f7;
+        border-radius: 3px;
+    }
+    #left {
+        left: -8px;
+    }
+    #right {
+        right: -8px;
+    }
+}

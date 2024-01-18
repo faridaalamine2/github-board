@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #0d1117;
+    overflow: hidden;
+}
+.task-input {
+    position: absolute;
+    bottom: 183px;
+
+    width: calc(100% - 24px);
+    padding: 10px;
+
+    background-color: #161b22;
+    color: #dae1e7;
+    font-size: 1rem;
+
+    border: 1px #30363d solid;
+    border-radius: 5px;
+
+    &:focus {
+        border: 1px #2f81f7 solid;
+        outline: 1px solid #2f81f7;
+    }
+}
+.app {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.app .board {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding: 10px;
+    overflow: auto;
+
+    .add-column-button {
+        margin-right: 170px;
+        padding: 10px 12px;
+
+        background-color: #21262d;
+        border: 1px solid #363b42;
+        border-radius: 5px;
+
+        //cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: #313841;
+            border: 1px solid #858a91;
+        }
+
+        .plus-icon {
+            width: 13px;
+            height: 12px;
+
+            opacity: 0.9;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.app .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.app .ghost-element {
+    position: absolute;
+
+    width: 266px;
+    height: fit-content;
+    padding: 15px;
+    margin-bottom: 5px;
+
+    background-color: #161b22;
+    color: #c5cbd2;
+    font-size: 0.95rem;
+
+    border: 1px #30363d solid;
+    border-radius: 7px;
+
+    opacity: 0.5;
+    pointer-events: none;
+}

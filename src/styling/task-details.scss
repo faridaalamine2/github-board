@@ -1,0 +1,185 @@
+@import "colors";
+.white-overlay {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(255, 255, 255, 0.3);
+    .task-details {
+        background-color: #161b22;
+        color: #dae1e7;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 800px;
+        overflow: auto;
+        border-radius: 20px 0 0 20px;
+        @media (max-width: 867px) {
+            width: 100%;
+            border-radius: 0;
+        }
+        .header {
+            padding: 30px 20px 20px 20px;
+            border-bottom: 1px #30363d solid;
+            .close {
+                display: flex;
+                justify-content: flex-end;
+                .x-icon {
+                    width: 15px;
+                    height: 15px;
+                    padding: 6px;
+
+                    border-radius: 3px;
+                    opacity: 0.5;
+                    ////cursor: pointer;
+
+                    &:hover {
+                        background-color: rgba($color: #ffffff, $alpha: 0.3);
+                    }
+                }
+            }
+
+            .title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .content {
+                    font-size: 1.4rem;
+                    font-weight: bold;
+                }
+                .edit-button {
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                    padding: 7px;
+                    border-radius: 5px;
+                    ////cursor: pointer;
+                    &:hover {
+                        background-color: rgba(255, 255, 255, 0.1);
+                    }
+                }
+            }
+            .info {
+                padding-top: 15px;
+                font-size: 0.8rem;
+                .status {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    padding: 5px;
+                    .column-title {
+                        padding: 3px 8px;
+                        text-transform: capitalize;
+                        border-radius: 15px;
+                    }
+                    @each $color, $rgb in $colors {
+                        $red: nth($rgb, 1);
+                        $green: nth($rgb, 2);
+                        $blue: nth($rgb, 3);
+                        .column-title.#{"" + $color} {
+                            background-color: rgba($red, $green, $blue, 0.1);
+                            color: rgb($red, $green, $blue);
+                            border: 2px solid rgb($red, $green, $blue);
+                        }
+                    }
+                }
+                .delete-button {
+                    display: flex;
+                    gap: 5px;
+                    align-items: center;
+                    color: rgb(255, 95, 95);
+                    padding: 5px;
+                    width: fit-content;
+                    border-radius: 5px;
+                    ////cursor: pointer;
+                    &:hover {
+                        background-color: rgba(255, 95, 95, 0.2);
+                    }
+                }
+            }
+        }
+        .description {
+            height: 60%;
+            padding: 5px;
+            margin: 10px;
+            .text {
+                height: 95%;
+                overflow: auto;
+                padding: 10px;
+            }
+            .placeholder {
+                font-size: 0.9rem;
+                opacity: 0.5;
+            }
+            .edit-button {
+                padding: 5px;
+                margin-bottom: 3px;
+                width: fit-content;
+                border-radius: 5px;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+            }
+        }
+    }
+    .task-details-open {
+        right: 0; /* Move to the 'right' position when open */
+    }
+}
+.title-form {
+    display: flex;
+    gap: 7px;
+    input {
+        padding: 5px;
+        background-color: #0d1117;
+        border: 1px #30363d solid;
+        border-radius: 5px;
+        color: #dae1e7;
+        width: 88%;
+        &:focus {
+            background-color: #0d1117;
+            border: 1px #2f81f7 solid;
+            outline: 1px solid #2f81f7;
+        }
+    }
+}
+.description-form {
+    height: 95%;
+    textarea {
+        padding: 5px;
+        background-color: #0d1117;
+        border: 1px #30363d solid;
+        border-radius: 5px;
+        color: #dae1e7;
+        width: 95%;
+        height: 80%;
+        &:focus {
+            background-color: #0d1117;
+            border: 1px #2f81f7 solid;
+            outline: 1px solid #2f81f7;
+        }
+    }
+}
+.buttons {
+    display: flex;
+    gap: 7px;
+    div,
+    input {
+        padding: 6px;
+        margin: 0;
+        font-size: 0.9rem;
+        color: #ebf4ed;
+        background-color: #21262d;
+        border: 1px #2c3138 solid;
+
+        border-radius: 5px;
+        ////cursor: pointer;
+    }
+    .save {
+        background-color: #238636;
+        border: 1px #238636 solid;
+    }
+}

@@ -1,0 +1,45 @@
+@import "colors";
+
+.color-input {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    .color {
+        width: 100%;
+        padding: 10px 8px;
+        border-radius: 5px;
+        ////cursor: pointer;
+        .checkbox {
+            padding: 6px;
+            border-radius: 100%;
+        }
+    }
+    @each $color, $rgb in $colors {
+        $red: nth($rgb, 1);
+        $green: nth($rgb, 2);
+        $blue: nth($rgb, 3);
+
+        .color.#{"" + $color} {
+            background-color: rgba($red, $green, $blue, 0.2);
+            .checkbox {
+                border: 2px solid rgb($red, $green, $blue);
+            }
+        }
+        .color.#{"" + $color}.selected {
+            background-color: rgb($red, $green, $blue) !important;
+            .checkbox {
+                background-color: black !important;
+                border: 2px solid black;
+                position: relative;
+                &::before {
+                    position: absolute;
+                    top: -4px;
+                    left: 21%;
+                    content: "x";
+                    font-size: 15px;
+                    color: rgb($red, $green, $blue);
+                }
+            }
+        }
+    }
+}

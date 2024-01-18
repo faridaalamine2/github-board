@@ -1,0 +1,143 @@
+@import "colors";
+
+.dialog {
+    width: 320px;
+
+    background-color: #161b22;
+    color: #dae1e7;
+    border: 1px #30363d solid;
+    border-radius: 10px;
+
+    .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: relative;
+        padding: 18px;
+
+        border-bottom: 1px #30363d solid;
+        .x-icon {
+            width: 15px;
+            height: 15px;
+            padding: 6px;
+
+            border-radius: 3px;
+            opacity: 0.5;
+            ////cursor: pointer;
+
+            &:hover {
+                background-color: rgba($color: #ffffff, $alpha: 0.3);
+            }
+        }
+    }
+
+    .result {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 20px;
+        .text {
+            padding: 5px;
+            min-width: 11px;
+            min-height: 12px;
+
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: capitalize;
+            border-radius: 15px;
+        }
+        @each $color, $rgb in $colors {
+            $red: nth($rgb, 1);
+            $green: nth($rgb, 2);
+            $blue: nth($rgb, 3);
+
+            .#{"" + $color}.text {
+                background-color: rgba($red, $green, $blue, 0.1);
+                color: rgb($red, $green, $blue);
+                border: 1px solid rgb($red, $green, $blue);
+            }
+        }
+    }
+
+    form {
+        font-size: 0.9rem;
+        > div {
+            padding: 10px 15px;
+            > div {
+                margin-top: 5px;
+                label {
+                    display: block;
+                    margin: 4px 0;
+                }
+
+                input[type="text"],
+                textarea {
+                    width: calc(100% - 10px);
+                    margin: 4px 0;
+                    padding: 5px;
+
+                    background-color: #0d1117;
+                    border: 1px #30363d solid;
+                    border-radius: 5px;
+                    color: #dae1e7;
+
+                    &:focus {
+                        background-color: #0d1117;
+                        border: 1px #2f81f7 solid;
+                        outline: 1px solid #2f81f7;
+                    }
+                }
+                .error-message {
+                    color: rgb(255, 95, 95);
+                }
+            }
+            .placeholder {
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.5);
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        padding: 18px;
+        border-top: 1px #30363d solid;
+        font-size: 0.9rem;
+        div,
+        input {
+            padding: 6px;
+            margin: 0;
+
+            color: #ebf4ed;
+            background-color: #21262d;
+            border: 1px #2c3138 solid;
+
+            border-radius: 5px;
+            ////cursor: pointer;
+        }
+        .save {
+            background-color: #238636;
+            border: none;
+        }
+        .delete {
+            color: rgb(255, 95, 95);
+        }
+    }
+    .delete-message {
+        margin: 20px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
+        .red-message {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(255, 95, 95, 0.1);
+            border: 1px solid rgb(129, 53, 53);
+            border-radius: 10px;
+        }
+    }
+}
