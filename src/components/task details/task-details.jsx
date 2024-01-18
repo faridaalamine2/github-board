@@ -9,11 +9,7 @@ import EditDescription from "./edit-description-form";
 import xIcon from "../../icons/x-icon.png";
 import "../../styling/task-details.scss";
 
-export default function TaskDetailsPane({
-    taskData,
-    isOpen,
-    closeTaskDetails,
-}) {
+export default function TaskDetailsPane({ taskData, closeTaskDetails }) {
     const { index, columnIndex } = taskData;
     const task = useSelector((state) => selectTask(state, columnIndex, index));
     const column = useSelector((state) => selectColumn(state, columnIndex));

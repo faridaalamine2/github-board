@@ -71,7 +71,6 @@ function App() {
                     <TaskDetailsPane
                         taskData={taskDetails.taskData}
                         closeTaskDetails={closeTaskDetails}
-                        isOpen={taskDetails.open}
                     />
                 )}
                 {dragState.task && <GhostElement />}
