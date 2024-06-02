@@ -65,7 +65,7 @@ export default function TaskDetailsPane({ taskData, closeTaskDetails }) {
                 data: { columnIndex, taskIndex: index },
             })
         );
-        closeTaskDetails();
+        setCloseState(true);
     };
 
     return (
