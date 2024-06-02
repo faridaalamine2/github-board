@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectColumn, selectTask } from "../../redux/columnsSlice";
 import { openDialog } from "../../redux/dialogSlice";
@@ -14,8 +14,19 @@ export default function TaskDetailsPane({ taskData, closeTaskDetails }) {
     const task = useSelector((state) => selectTask(state, columnIndex, index));
     const column = useSelector((state) => selectColumn(state, columnIndex));
     const dispatch = useDispatch();
-
+    const [className, setClassName] = useState("task-details");
+    const [closeState, setCloseState] = useState(false);
     const [editTitleOpen, setEditTitleOpen] = useState(false);
+    useEffect(() => {
+        console.log("effect");
+        setClassName("task-details open");
+        if (closeState) {
+            setClassName("task-details");
+            setTimeout(() => {
+                closeTaskDetails();
+            }, 700);
+        }
+    }, [closeState]);
     const openEditTitle = () => {
         setEditTitleOpen(true);
     };
@@ -44,7 +55,7 @@ export default function TaskDetailsPane({ taskData, closeTaskDetails }) {
 
     const handleOverlayClick = (e) => {
         if (e.target === overlayRef.current) {
-            closeTaskDetails();
+            setCloseState(true);
         }
     };
     const handleDelete = () => {
@@ -60,16 +71,21 @@ export default function TaskDetailsPane({ taskData, closeTaskDetails }) {
     return (
         <div
             className="white-overlay"
+            style={{
+                background: closeState && "transparent",
+            }}
             ref={overlayRef}
             onClick={handleOverlayClick}
         >
-            <div className="task-details">
+            <div className={className}>
                 <div className="header">
                     <div className="close">
                         <img
                             src={xIcon}
                             className="x-icon"
-                            onClick={closeTaskDetails}
+                            onClick={() => {
+                                setCloseState(true);
+                            }}
                         ></img>
                     </div>
                     {editTitleOpen ? (

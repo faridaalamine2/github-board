@@ -7,17 +7,18 @@
     height: 100%;
 
     background-color: rgba(255, 255, 255, 0.3);
+
     .task-details {
         background-color: #161b22;
         color: #dae1e7;
 
         position: absolute;
         top: 0;
-        right: 0;
+        right: -1000px;
         height: 100%;
         width: 800px;
-        overflow: auto;
         border-radius: 20px 0 0 20px;
+        transition: right 0.7s;
         @media (max-width: 867px) {
             width: 100%;
             border-radius: 0;
@@ -125,8 +126,8 @@
             }
         }
     }
-    .task-details-open {
-        right: 0; /* Move to the 'right' position when open */
+    .task-details.open {
+        right: 0;
     }
 }
 .title-form {

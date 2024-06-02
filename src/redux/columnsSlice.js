@@ -1,30 +1,30 @@
 /* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
 const initialData = localStorage.getItem("columns");
-const initialState = initialData ? JSON.parse(initialData) : [];
-// const initial = [
-//     {
-//         labelText: "todo",
-//         color: "green",
-//         description: "This item hasn't been started",
-//         limit: 8,
-//         tasks: [],
-//     },
-//     {
-//         labelText: "in progress",
-//         color: "yellow",
-//         description: "This is actively being worked on",
-//         limit: 8,
-//         tasks: [],
-//     },
-//     {
-//         labelText: "done",
-//         color: "violet",
-//         description: "This has been completed",
-//         limit: 8,
-//         tasks: [],
-//     },
-// ];
+const initial = [
+    {
+        labelText: "todo",
+        color: "green",
+        description: "This item hasn't been started",
+        limit: 8,
+        tasks: [],
+    },
+    {
+        labelText: "in progress",
+        color: "yellow",
+        description: "This is actively being worked on",
+        limit: 8,
+        tasks: [],
+    },
+    {
+        labelText: "done",
+        color: "violet",
+        description: "This has been completed",
+        limit: 8,
+        tasks: [],
+    },
+];
+const initialState = initialData ? JSON.parse(initialData) : initial;
 
 function updateStorage(state) {
     localStorage.setItem("columns", JSON.stringify(state));
